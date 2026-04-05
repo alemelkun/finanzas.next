@@ -19,7 +19,7 @@ export default function LoginPage() {
       : await supabase.auth.signUp({ email, password })
     if (error) { setError(error.message); setLoading(false) }
     else window.location.href = '/cuentas'
-
+}
   return (
     <div style={{ minHeight: '100vh', background: '#0e0f14', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
       <div style={{ fontSize: '48px', marginBottom: '16px' }}>💰</div>
