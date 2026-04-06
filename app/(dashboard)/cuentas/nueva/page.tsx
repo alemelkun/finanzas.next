@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 
-const BANCOS_DEBIT = ['Brubank', 'Mercado Pago', 'Ualá', 'Naranja X', 'Lemon', 'Belo', 'Santander', 'Galicia', 'Banco Nación', 'BBVA', 'HSBC', 'Macro', 'Otro']
+const BANCOS_DEBIT = ['Brubank', 'Mercado Pago', 'Ualá', 'Naranja X', 'Lemon', 'Belo', 'Fiwind', 'Santander', 'Galicia', 'Banco Nación', 'BBVA', 'HSBC', 'Macro', 'Otro']
 const BANCOS_CREDIT = ['Galicia', 'Santander', 'BBVA', 'HSBC', 'Macro', 'Naranja X', 'Otro']
 const COLORES = ['#1d9e75','#ef9f27','#d85a30','#7f77dd','#378add','#d4537e','#85b7eb','#f7931a','#5dcaa5','#639922']
 const TIPOS = [
