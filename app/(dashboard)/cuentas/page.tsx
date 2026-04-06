@@ -1,8 +1,10 @@
 'use client'
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 
 export default function CuentasPage() {
+  const router = useRouter()
   const [accounts, setAccounts] = useState<any[]>([])
   const [fxRates, setFxRates] = useState({ blue: 1270, oficial: 1080, mep: 1255 })
   const [viewCur, setViewCur] = useState('orig')
@@ -32,8 +34,8 @@ export default function CuentasPage() {
   const netWorth  = totalARS + totalUSD * fxRates.blue - totalDebt
 
   const displayBal = (acc: any) => {
-    if (viewCur === 'usd')  return fmt(toUSD(acc), 'usd')
-    if (viewCur === 'ars')  return fmt(toARS(acc), 'ars')
+    if (viewCur === 'usd') return fmt(toUSD(acc), 'usd')
+    if (viewCur === 'ars') return fmt(toARS(acc), 'ars')
     return acc.type?.startsWith('usd') ? fmt(Number(acc.balance), 'usd') : fmt(Number(acc.balance), 'ars')
   }
 
@@ -44,8 +46,8 @@ export default function CuentasPage() {
 
   const cardGrad = (color: string, type: string) => {
     const bases: Record<string, string[]> = {
-      'ars-debit':  ['#1a2218','#0f1a10'], 'fintech': ['#1a2a3a','#0d1f2d'],
-      'usd-debit':  ['#0f1a2a','#091220'], 'ars-credit': ['#2a1a1a','#1f1010'],
+      'ars-debit': ['#1a2218','#0f1a10'], 'fintech': ['#1a2a3a','#0d1f2d'],
+      'usd-debit': ['#0f1a2a','#091220'], 'ars-credit': ['#2a1a1a','#1f1010'],
       'usd-credit': ['#1a1228','#110d1e'],
     }
     const b = bases[type] ?? bases['fintech']
@@ -56,11 +58,14 @@ export default function CuentasPage() {
     <div style={{ paddingTop: '20px' }}>
 
       {/* Header */}
-      <div style={{ padding: '0 20px 0', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '14px' }}>
+      <div style={{ padding: '0 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '14px' }}>
         <div>
           <div style={{ fontSize: '12px', color: '#7b7f96', letterSpacing: '.1em', textTransform: 'uppercase' }}>Finanzas</div>
           <h1 style={{ fontSize: '20px', fontWeight: 500, color: '#f0f1f5', marginTop: '2px' }}>Mis cuentas</h1>
         </div>
+        <button onClick={() => router.push('/cuentas/nueva')} style={{ marginTop: '8px', padding: '7px 14px', background: 'rgba(127,119,221,0.12)', border: '1px solid #7f77dd', borderRadius: '8px', color: '#ccc8f8', fontSize: '12px', cursor: 'pointer' }}>
+          + Agregar
+        </button>
       </div>
 
       {/* FX Banner */}
@@ -101,8 +106,8 @@ export default function CuentasPage() {
       </div>
 
       {debit.length === 0 && (
-        <div style={{ padding: '20px', margin: '0 20px', background: '#16181f', borderRadius: '14px', textAlign: 'center', color: '#7b7f96', fontSize: '14px' }}>
-          No tenés cuentas todavía — agregá una desde Supabase
+        <div onClick={() => router.push('/cuentas/nueva')} style={{ padding: '20px', margin: '0 20px', background: '#16181f', borderRadius: '14px', textAlign: 'center', color: '#7b7f96', fontSize: '14px', cursor: 'pointer' }}>
+          + Agregá tu primera cuenta
         </div>
       )}
 
