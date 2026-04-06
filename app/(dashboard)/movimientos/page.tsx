@@ -135,7 +135,7 @@ export default function MovimientosPage() {
       {/* FAB */}
       <button
         onClick={() => router.push('/movimientos/nueva')}
-        style={{ position: 'fixed', bottom: '80px', right: '20px', width: '52px', height: '52px', borderRadius: '50%', background: '#7f77dd', border: 'none', color: 'white', fontSize: '24px', cursor: 'pointer', boxShadow: '0 4px 20px rgba(127,119,221,.4)', zIndex: 40 }}>
+        style={{ position: 'fixed', bottom: '90px', right: '20px', width: '52px', height: '52px', borderRadius: '50%', background: '#7f77dd', border: 'none', color: 'white', fontSize: '24px', cursor: 'pointer', boxShadow: '0 4px 20px rgba(127,119,221,.4)', zIndex: 40 }}>
         +
       </button>
     </div>
