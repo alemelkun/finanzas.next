@@ -12,7 +12,7 @@ export default function LoginPage() {
     const { data, error } = await supabase.auth.signInWithPassword({ email, password })
     if (error) { setMsg('Error: ' + error.message); return }
     setMsg('OK! Redirigiendo...')
-    setTimeout(() => { window.location.href = '/cuentas' }, 500)
+    window.location.replace('https://finanzas-next-nu.vercel.app/cuentas')
   }
 
   return (
