@@ -12,7 +12,7 @@ export default function MovimientosPage() {
   useEffect(() => {
     supabase
       .from('transactions')
-      .select('*, account:accounts(id,name,color,type), category:categories(id,name,emoji,color)')
+      .select('*')
       .order('date', { ascending: false })
       .limit(100)
       .then(({ data }) => { if (data) setTxs(data) })
